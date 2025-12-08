@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 
 
+
 function App() {
   return (
     <>
