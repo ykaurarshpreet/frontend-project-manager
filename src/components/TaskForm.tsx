@@ -19,7 +19,7 @@ function TaskForm ({projectId}: TaskFormProps){
 //submit function
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+console.log(loading);
     try {
         setLoading(true);
         const res = await apiClient.post(`/api/projects/${projectId}/tasks`, {title, description, status});

@@ -11,6 +11,7 @@ function ProjectDetailsPage() {
   const [tasks, setTasks] = useState<Task[]>([]) //--->  //type safety, labeling array of Task
 
   const { projectId } = useParams();
+console.log(tasks);
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
