@@ -12,7 +12,7 @@ function TaskForm ({projectId}: TaskFormProps){
     const [tasks, setTasks] = useState<Task[]>([]);
     const [title,setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('todo');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
 
@@ -24,8 +24,6 @@ console.log(loading);
         setLoading(true);
         const res = await apiClient.post(`/api/projects/${projectId}/tasks`, {title, description, status, project:projectId});
         setTasks((prev) => [...prev, res.data]);
-        console.log("Sending:", { title, description, status, projectId });
-
     } catch (error: any) {
         console.error(error);
         setError(error.message);
