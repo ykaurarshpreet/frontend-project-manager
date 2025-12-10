@@ -22,8 +22,10 @@ const handleSubmit = async (e: React.FormEvent) => {
 console.log(loading);
     try {
         setLoading(true);
-        const res = await apiClient.post(`/api/projects/${projectId}/tasks`, {title, description, status});
+        const res = await apiClient.post(`/api/projects/${projectId}/tasks`, {title, description, status, project:projectId});
         setTasks((prev) => [...prev, res.data]);
+        console.log("Sending:", { title, description, status, projectId });
+
     } catch (error: any) {
         console.error(error);
         setError(error.message);
