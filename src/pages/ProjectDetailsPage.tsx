@@ -64,11 +64,13 @@ console.log(tasks);
         <div className="text-xl">{project?.description}</div>
       </div>
 
-      <div className="mt-15">
-        {/* <div className="text-2x1">{tasks?.title}</div>
-        <div className="text-2x1">{tasks?.description}</div>
-        <div className="text-2x1">{tasks?.status}</div> */}
+     {tasks && tasks.map(task => (
+       <div key= {task._id} className="mt-15">
+        <div className="text-2x1">{task?.title}</div>
+        <div className="text-2x1">{task?.description}</div>
+        <div className="text-2x1">{task?.status}</div>
       </div>
+     ))}
 
 
     </div>

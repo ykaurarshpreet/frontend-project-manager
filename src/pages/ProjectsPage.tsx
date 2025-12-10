@@ -16,6 +16,7 @@ function ProjectsPage() {
       try {
         setLoading(true);
         const res = await apiClient.get("/api/projects");
+       
         console.log(res.data);
         setProjects(res.data);
       } catch (error: any) {
@@ -83,8 +84,8 @@ function ProjectsPage() {
       {error && <div>{error}</div>}
 
       <div className="w-full flex gap-5 mt-10">
-        {projects &&
-          projects.map((project) => (
+        {projects.length > 0 &&
+          projects?.map((project) => (
             <div
               key={project._id}
               className="text-white w-50 flex flex-col h-50 border border-red-500 p-2 text-center rounded"
