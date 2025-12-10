@@ -3,6 +3,7 @@ import { apiClient } from "../clients/api";
 import { useParams } from "react-router-dom";
 import type { Project } from "../types";
 import type { Task } from "../types";
+import TaskForm from "../components/TaskForm";
 
 function ProjectDetailsPage() {
   const [project, setProject] = useState<Project | null>(null);
@@ -58,12 +59,14 @@ console.log(tasks);
   return (
     <div className="text-white">
       <h1 className="text-4xl">Project Details</h1>
-
+    
       <div className="mt-10">
         <div className="text-3xl">{project?.name}</div>
         <div className="text-xl">{project?.description}</div>
       </div>
 
+    <h1>Tasks</h1>
+    {projectId && <TaskForm projectId={projectId} />}
      {tasks && tasks.map(task => (
        <div key= {task._id} className="mt-15">
         <div className="text-2x1">{task?.title}</div>
