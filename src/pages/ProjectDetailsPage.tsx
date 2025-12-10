@@ -8,7 +8,7 @@ import TaskForm from "../components/TaskForm";
 function ProjectDetailsPage() {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();                   
+  const [error, setError] = useState('');                   
   const [tasks, setTasks] = useState<Task[]>([]) //--->  //type safety, labeling array of Task
 
   const { projectId } = useParams();
@@ -66,6 +66,7 @@ console.log(tasks);
       </div>
 
     <h1>Tasks</h1>
+    
     {projectId && <TaskForm projectId={projectId} />}
      {tasks && tasks.map(task => (
        <div key= {task._id} className="mt-15">
