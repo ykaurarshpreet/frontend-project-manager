@@ -16,31 +16,33 @@ Note: This will impact Vite dev & build performances.
 
 
 ## Frontend Pages and Components
-ProjectDetailsPage: Displays a project and its tasks. Handles fetching project details and tasks from the backend.
+ProjectDetailsPage: It is the page that shows a project with its corresponding tasks. It also manages the necessary backend calls for obtaining the project and tasks details.
 
-TaskForm: Form for creating a new task. Sends a POST request to the backend and updates the project’s task list.
+TaskForm: The component is a form used for submitting a new task. It sends a POST request to the backend and updates the project's task list in the frontend.
 
-EditTaskForm: Form for editing an existing task. Sends a PUT request to update a task.
+EditTaskForm: The component is a form used for making changes to an existing task. It sends a PUT request for the purpose of task updating.
 
-Navbar: Navigation for the app.
+Navbar: It is the component responsible for providing navigation options within the app.
 
 apiClient: Axios instance configured with the backend URL and authorization headers.
 
 ## How it works
 
-User Authentication: Users must log in or sign up to access the app. JWT is used to protect backend routes.
+User Authentication: It is required for users to either log in or sign up to be able to use the application. In the backend, routes are protected with JSON web token authentication.
 
-Projects: Users can create projects, view details, and delete projects they own.
+Projects: 
+    
+      The feature allows users to create projects, view their details, and delete projects that they own.
 
 Tasks:
 
-      Tasks are created under a specific project.
+      Creating a task falls under a particular project.
 
-      Tasks can be edited or deleted.
+      A task can be edited or removed.
 
       Newly created tasks automatically appear in the project view without refreshing.
 
-      Edit/Delete buttons are only visible for tasks belonging to the authenticated user.
+      Only the authenticated user is able to see Edit/Delete buttons for their tasks.
 
 State Management:
 
