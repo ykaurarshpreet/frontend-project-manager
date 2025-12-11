@@ -83,18 +83,18 @@ function ProjectsPage() {
 
       {error && <div>{error}</div>}
 
-      <div className="w-full flex gap-5 mt-10">
+      <div className="w-full flex flex-wrap gap-5 mt-10">
         {projects.length > 0 &&
           projects?.map((project) => (
             <div
               key={project._id}
-              className="text-white w-50 flex flex-col h-50 border border-teal-600 p-2 text-center rounded"
+              className="text-white w-60 flex flex-col h-50 border border-teal-600 p-4 text-center rounded bg-slate-800"
             >
               <div className="font-bold">{project.name}</div>
               <div>{project.description}</div>
               <Link
                 to={`/projects/${project._id}`}
-                className="mt-auto bg-sky-500 rounded"
+                className="mt-auto bg-sky-500 rounded p-1"
               >
                 See Project
               </Link>
