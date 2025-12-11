@@ -49,7 +49,7 @@ function ProjectsPage() {
     }
   };
   return (
-    <div>
+    <div className="text-white">
       <h1 className="text-4xl font-bold text-white text-center">Projects</h1>
 
       <form
