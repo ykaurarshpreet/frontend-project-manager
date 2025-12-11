@@ -23,3 +23,8 @@ export interface EditTaskFormProps {
   onUpdate(updatedTask: Task): void;
   projectId: string | undefined;
 }
+
+export type TaskFormProps = {
+  projectId: string;
+  onTaskCreate: (task: Task) => void;
+};

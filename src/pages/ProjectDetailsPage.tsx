@@ -53,6 +53,11 @@ console.log(tasks);
     fetchProjectTasks()
   }, [projectId]);
 
+  const handleTaskCreate = (newTask: Task) => {
+  setTasks(prev => [...prev, newTask]);
+};
+
+
   const handleTaskUpdate =(updatedTask: Task) => {
     setTasks(prevTasks =>
       prevTasks.map(task => 
@@ -86,7 +91,7 @@ console.log(tasks);
 
     <h1>Tasks</h1>
     
-    {projectId && <TaskForm projectId={projectId} />}
+    {projectId && <TaskForm projectId={projectId} onTaskCreate={handleTaskCreate} />}
      {tasks && tasks.map(task => (
        <div key= {task._id} className="mt-15">
         
