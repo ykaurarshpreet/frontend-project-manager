@@ -90,19 +90,21 @@ console.log(tasks);
       </div>
     
     {projectId && <TaskForm projectId={projectId} onTaskCreate={handleTaskCreate} />}
+
      {tasks && tasks.map(task => (
-       <div key= {task._id} className="mt-15">
+       <div key= {task._id} className="text-white w-50 flex flex-col h-50 border border-teal-600 p-2 text-center rounded">
         
+        <div className="w-full flex gap-5 mt-10">
         <div className="text-2x1">{task?.title}</div>
         <div className="text-2x1">{task?.description}</div>
         <div className="text-2x1">{task?.status}</div>
 
-        <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={()=> setShowEditForm(task._id)}>Edit</button>
+        <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded gap" onClick={()=> setShowEditForm(task._id)}>Edit</button>
         {showEditForm === task._id && (
           <EditTaskForm projectId={projectId} task={task} onUpdate={handleTaskUpdate}/>
           )}
         <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded" onClick={()=> handleTaskDelete(task._id)}>Delete</button>
-    
+          </div>
         
         
       </div>
