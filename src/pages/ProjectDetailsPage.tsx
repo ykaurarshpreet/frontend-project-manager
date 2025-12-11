@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import type { Project } from "../types";
 import type { Task } from "../types";
 import TaskForm from "../components/TaskForm";
+import EditTaskForm from "../components/EditTaskForm";
 
 function ProjectDetailsPage() {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');                   
   const [tasks, setTasks] = useState<Task[]>([]) //--->  //type safety, labeling array of Task
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const { projectId } = useParams();
 console.log(tasks);
@@ -70,9 +72,13 @@ console.log(tasks);
     {projectId && <TaskForm projectId={projectId} />}
      {tasks && tasks.map(task => (
        <div key= {task._id} className="mt-15">
+        
         <div className="text-2x1">{task?.title}</div>
         <div className="text-2x1">{task?.description}</div>
         <div className="text-2x1">{task?.status}</div>
+        <button className="mt-auto bg-sky-500 rounded" onClick={()=> setShowEditForm(!showEditForm)}>Edit</button>
+        {showEditForm && <EditTaskForm projectId={projectId} task={task} onUpdate={()=>{}}/>}
+        <button className="mt-auto bg-red-600 rounded">Delete</button>
       </div>
      ))}
 

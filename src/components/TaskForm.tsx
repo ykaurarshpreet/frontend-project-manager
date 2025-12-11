@@ -3,7 +3,7 @@ import { apiClient } from "../clients/api";
 import type { Task } from "../types";
 import { useState } from "react";
 
-type TaskFormProps = {
+export type TaskFormProps = {
   projectId: string;
 };
 

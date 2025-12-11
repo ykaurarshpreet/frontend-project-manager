@@ -17,3 +17,9 @@ export interface Task {
     description: string;
     status: 'todo' | 'in-progress' | 'done';
 }
+
+export interface EditTaskFormProps {
+  task: Task;
+  onUpdate(updatedTask: Task): void;
+  projectId: string | undefined;
+}
