@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
+    <div className="bg-blue-800">
         <nav className="text-white flex justify-around items-center w-full h-10">
       
       <NavLink to="/">Home</NavLink>
@@ -9,6 +10,7 @@ function Navbar() {
       <NavLink to="/auth">Login/Registration</NavLink>
 
     </nav>
+    </div>
   );
 }
 
