@@ -83,7 +83,7 @@ function ProjectsPage() {
 
       {error && <div>{error}</div>}
 
-      <div className="w-full flex gap-5 mt-10">
+      <div className="w-full flex flex-wrap gap-5 mt-10">
         {projects.length > 0 &&
           projects?.map((project) => (
             <div
