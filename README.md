@@ -13,6 +13,75 @@ The React Compiler is enabled on this template. See [this documentation](https:/
 
 Note: This will impact Vite dev & build performances.
 
+
+
+## Frontend Pages and Components
+ProjectDetailsPage: Displays a project and its tasks. Handles fetching project details and tasks from the backend.
+
+TaskForm: Form for creating a new task. Sends a POST request to the backend and updates the project’s task list.
+
+EditTaskForm: Form for editing an existing task. Sends a PUT request to update a task.
+
+Navbar: Navigation for the app.
+
+apiClient: Axios instance configured with the backend URL and authorization headers.
+
+## How it works
+
+User Authentication: Users must log in or sign up to access the app. JWT is used to protect backend routes.
+
+Projects: Users can create projects, view details, and delete projects they own.
+
+Tasks:
+
+      Tasks are created under a specific project.
+
+      Tasks can be edited or deleted.
+
+      Newly created tasks automatically appear in the project view without refreshing.
+
+      Edit/Delete buttons are only visible for tasks belonging to the authenticated user.
+
+State Management:
+
+      Frontend uses React state (useState) to store tasks and projects.
+
+      New tasks are passed up via callbacks to update the project view dynamically.
+
+
+## Backend 
+Projects:
+
+      GET /api/projects - Get all projects of the authenticated user
+
+      GET /api/projects/:projectId - Get a single project by ID
+
+      POST /api/projects - Create a new project
+
+      PUT /api/projects/:projectId - Update a project
+
+      DELETE /api/projects/:projectId - Delete a project
+
+Tasks:
+
+      GET /api/projects/:projectId/tasks - Get all tasks for a project
+
+      GET /api/projects/:projectId/tasks/:taskId - Get a single task
+
+      POST /api/projects/:projectId/tasks - Create a new task for a project
+
+      PUT /api/projects/:projectId/tasks/:taskId - Update a task
+
+      DELETE /api/projects/:projectId/tasks/:taskId - Delete a task
+
+Authorization:
+
+      All routes are protected using authMiddleware.
+
+      Users can only modify projects/tasks that belong to them.
+
+
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:

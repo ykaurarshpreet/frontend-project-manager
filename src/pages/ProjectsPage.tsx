@@ -50,13 +50,13 @@ function ProjectsPage() {
   };
   return (
     <div className="text-white">
-      <h1 className="text-4xl font-bold text-white">Projects</h1>
+      <h1 className="text-4xl font-bold text-white text-center">Projects</h1>
 
       <form
         onSubmit={handleSubmit}
         className=" border p-2 h-50 mt-10 flex flex-col gap-2 rounded"
       >
-        <label htmlFor="project-name">Project Name: </label>
+        <label htmlFor="project-name">Project Name </label>
         <input
           type="text"
           name="project-name"
@@ -77,7 +77,7 @@ function ProjectsPage() {
         <input
           type="submit"
           value="Create Project"
-          className="mt-auto bg-sky-500 rounded"
+          className="mt-auto bg-teal-700 rounded"
         />
       </form>
 
@@ -88,7 +88,7 @@ function ProjectsPage() {
           projects?.map((project) => (
             <div
               key={project._id}
-              className="text-white w-50 flex flex-col h-50 border border-red-500 p-2 text-center rounded"
+              className="text-white w-50 flex flex-col h-50 border border-teal-600 p-2 text-center rounded"
             >
               <div className="font-bold">{project.name}</div>
               <div>{project.description}</div>
