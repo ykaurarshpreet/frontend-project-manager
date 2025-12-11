@@ -7,19 +7,21 @@ import type { Task, EditTaskFormProps } from "../types";
 
 function EditTaskForm({ task, onUpdate, projectId}: EditTaskFormProps){
     //local stat
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [status, setStatus] = useState('todo');
+    const [title, setTitle] = useState(task.title);
+    const [description, setDescription] = useState(task.description);
+    const [status, setStatus] = useState(task.status);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState();
+    const [error, setError] = useState<string | null>(null);
+
 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(loading);
+        
         try {
             setLoading(true);
             const res = await apiClient.put(`/api/projects/${projectId}/tasks/${task._id}`, {title,description,status,project:projectId});
+            console.log("updated task", res.data);
             onUpdate(res.data);
         } catch (error: any) {
             console.error(error);
@@ -58,7 +60,7 @@ function EditTaskForm({ task, onUpdate, projectId}: EditTaskFormProps){
             </button>
         </form>
         </div>
-    )
+    );
 }
 
-export default EditTaskForm
+export default EditTaskForm;

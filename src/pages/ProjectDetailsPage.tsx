@@ -11,7 +11,7 @@ function ProjectDetailsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');                   
   const [tasks, setTasks] = useState<Task[]>([]) //--->  //type safety, labeling array of Task
-  const [showEditForm, setShowEditForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState<string | null>(null);
 
   const { projectId } = useParams();
 console.log(tasks);
@@ -53,6 +53,23 @@ console.log(tasks);
     fetchProjectTasks()
   }, [projectId]);
 
+  const handleTaskUpdate =(updatedTask: Task) => {
+    setTasks(prevTasks =>
+      prevTasks.map(task => 
+        task._id === updatedTask._id ? updatedTask: task
+      )
+    );
+    setShowEditForm(null);
+  };
+
+  const handleTaskDelete = async (taskId: string) => {
+  try {
+    await apiClient.delete(`/api/projects/${projectId}/tasks/${taskId}`);
+    setTasks(prev => prev.filter(task => task._id !== taskId));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   if (loading) return <div className="text-3xl text-white">Loading...</div>;
 
@@ -76,9 +93,14 @@ console.log(tasks);
         <div className="text-2x1">{task?.title}</div>
         <div className="text-2x1">{task?.description}</div>
         <div className="text-2x1">{task?.status}</div>
-        <button className="mt-auto bg-sky-500 rounded" onClick={()=> setShowEditForm(!showEditForm)}>Edit</button>
-        {showEditForm && <EditTaskForm projectId={projectId} task={task} onUpdate={()=>{}}/>}
-        <button className="mt-auto bg-red-600 rounded">Delete</button>
+        <button className="mt-auto bg-sky-500 rounded" onClick={()=> setShowEditForm(task._id)}>Edit</button>
+        {showEditForm === task._id && (
+          <EditTaskForm projectId={projectId} task={task} onUpdate={handleTaskUpdate}/>
+          )}
+        <button className="mt-auto bg-red-600 rounded" onClick={()=> handleTaskDelete(task._id)}>Delete</button>
+    
+        
+        
       </div>
      ))}
 
