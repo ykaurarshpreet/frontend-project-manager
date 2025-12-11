@@ -88,8 +88,6 @@ console.log(tasks);
         <div className="text-3xl">{project?.name}</div>
         <div className="text-xl">{project?.description}</div>
       </div>
-
-    <h1>Tasks</h1>
     
     {projectId && <TaskForm projectId={projectId} onTaskCreate={handleTaskCreate} />}
      {tasks && tasks.map(task => (
@@ -98,11 +96,11 @@ console.log(tasks);
         <div className="text-2x1">{task?.title}</div>
         <div className="text-2x1">{task?.description}</div>
         <div className="text-2x1">{task?.status}</div>
-        <button className="mt-auto bg-sky-500 rounded" onClick={()=> setShowEditForm(task._id)}>Edit</button>
+        <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={()=> setShowEditForm(task._id)}>Edit</button>
         {showEditForm === task._id && (
           <EditTaskForm projectId={projectId} task={task} onUpdate={handleTaskUpdate}/>
           )}
-        <button className="mt-auto bg-red-600 rounded" onClick={()=> handleTaskDelete(task._id)}>Delete</button>
+        <button className="bg-blue-500 hover:bg-red-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={()=> handleTaskDelete(task._id)}>Delete</button>
     
         
         

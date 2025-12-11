@@ -40,7 +40,7 @@ return(
 
         <form 
         onSubmit={handleSubmit}
-        className="border p-2 h-50 mt-10 flex flex-col gap-2 rounded">
+        className="border p-2 h-64 mt-10 flex flex-col gap-2 rounded">
 
         <label htmlFor="task-title">Task Title: </label>
         <input 
