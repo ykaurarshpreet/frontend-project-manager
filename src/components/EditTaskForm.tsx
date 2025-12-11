@@ -29,11 +29,16 @@ function EditTaskForm({ task, onUpdate, projectId}: EditTaskFormProps){
         }
         
     }
+
+ 
+
     return(
         <div>
             <h1>Edit form</h1>
         <form onSubmit={handleSubmit}>
             <h2>Edit Task</h2>
+
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
             <label>Title</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} />
