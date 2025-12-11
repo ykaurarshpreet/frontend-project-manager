@@ -1,21 +1,14 @@
-# React + TypeScript + Vite
+## Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
+This project is basically a lightweight project manager app where users can sign up, log in, and keep track of their own projects and tasks. After creating an account and logging in, users can see all their projects on the Projects page and create new ones, update them, or delete them whenever they want. Clicking on a project opens a page that shows all the tasks for that specific project, and users can add, edit, or delete tasks there too. All the routes are protected so people can only see their own stuff, and the app uses JWT auth (plus optional GitHub login) to keep everything secure. It’s a simple React single-page app with pages for Home, Auth, Projects, and Project Details, and it includes helpful loading states and error messages so the experience feels smooth.
 
 
 ## Frontend Pages and Components
+
+env file in the root directory of the project:
+
+      VITE_BACKEND_URL
+
 ProjectDetailsPage: It is the page that shows a project with its corresponding tasks. It also manages the necessary backend calls for obtaining the project and tasks details.
 
 TaskForm: The component is a form used for submitting a new task. It sends a POST request to the backend and updates the project's task list in the frontend.
@@ -52,6 +45,16 @@ State Management:
 
 
 ## Backend 
+
+env file in the root directory of the project:
+
+      MONGO_URI
+      JWT_SECRET
+      GITHUB_CLIENT_ID
+      GITHUB_CLIENT_SECRET
+      GITHUB_CALLBACK_URL
+      FRONTEND_URL
+
 Projects:
 
       GET /api/projects - Get all projects of the authenticated user
@@ -84,63 +87,4 @@ Authorization:
 
 
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
