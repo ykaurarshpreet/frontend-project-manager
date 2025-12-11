@@ -20,7 +20,7 @@ function EditTaskForm({ task, onUpdate, projectId}: EditTaskFormProps){
         
         try {
             setLoading(true);
-            const res = await apiClient.put(`/api/projects/${projectId}/tasks/${task._id}`, {title,description,status,project:projectId});
+            const res = await apiClient.put(`/api/projects/${projectId}/tasks/${task._id}`, {title,description,status,project: projectId});
             console.log("updated task", res.data);
             onUpdate(res.data);
         } catch (error: any) {
