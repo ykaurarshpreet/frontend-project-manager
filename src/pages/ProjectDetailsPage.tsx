@@ -92,7 +92,7 @@ console.log(tasks);
     {projectId && <TaskForm projectId={projectId} onTaskCreate={handleTaskCreate} />}
 
      {tasks && tasks.map(task => (
-       <div key= {task._id} className="text-white w-50 flex flex-col h-50 border border-teal-600 p-2 text-center rounded">
+       <div key= {task._id} className="border p-2 h-55 mt-10 flex flex-col gap-2 rounded">
         
         <div className="w-full flex gap-5 mt-10">
         <div className="text-2x1">{task?.title}</div>
